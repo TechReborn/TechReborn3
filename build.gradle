@@ -133,4 +133,11 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 build.dependsOn signJar
 
 apply from: 'https://github.com/FabricMC/fabric-docs/raw/master/gradle/ideconfig.gradle'
-apply from: 'scripts/setupDeps.groovy'
+
+task setupAll {
+    idea.module.sourceDirs += sourceSets.RebornCore.java.srcDirs
+    idea.module.sourceDirs += sourceSets.RebornCore.resources.srcDirs
+}
+
+tasks.idea.dependsOn "setupDecompWorkspace"
+setupAll.finalizedBy(tasks.idea)
