@@ -3,6 +3,7 @@
 /run
 /build
 /eclipse
+/RebornCore
 /.gradle
 *.iml
 *.ipr

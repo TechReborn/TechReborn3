@@ -45,6 +45,17 @@ if (ENV.BUILD_NUMBER) {
 	version = version + "." + "${System.getenv().BUILD_NUMBER}"
 }
 
+sourceSets {
+    RebornCore {
+		java {
+			srcDir "RebornCore/src/main/java"
+		}
+		resources {
+			srcDir "RebornCore/src/main/resources"
+		}
+    }
+}
+
 minecraft {
 	version = "1.11.2-13.20.0.2282"
 	mappings = "snapshot_20161220"
@@ -67,7 +78,7 @@ dependencies {
 	// deobfCompile('RebornCore:RebornCore-1.11.2:+:universal') {
 	// 	transitive = false
 	// }
-	
+	compile "teamreborn.concrete:ConcreteReborn:0.1.0"
 }
 
 
