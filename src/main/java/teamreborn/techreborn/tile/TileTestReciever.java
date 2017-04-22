@@ -11,14 +11,14 @@ import teamreborn.techreborn.TRConstants;
  */
 @RebornRegistry(modID = TRConstants.MOD_ID)
 @TileRegistry(name = "tileTestReciever")
-public class TileTestReciever extends TileEntity implements IGridReciever {
-	@Override
-	public void handlePower(double power, double powerRatio) {
-		System.out.println("power: " + power + " ratio: " + powerRatio);
-	}
-
-	@Override
-	public double requestPower() {
-		return 25;
-	}
+public class TileTestReciever extends TileEntity  {
+//	@Override
+//	public void handlePower(double power, double powerRatio) {
+//		System.out.println("power: " + power + " ratio: " + powerRatio);
+//	}
+//
+//	@Override
+//	public double requestPower() {
+//		return 25;
+//	}
 }

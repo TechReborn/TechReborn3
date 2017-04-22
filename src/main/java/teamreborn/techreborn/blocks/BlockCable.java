@@ -14,7 +14,7 @@ import teamreborn.techreborn.TechRebornCreativeTab;
  * Created by Mark on 22/04/2017.
  */
 @RebornRegistry(modID = TRConstants.MOD_ID)
-public class BlockCable extends Block implements IGridConnection {
+public class BlockCable extends Block {
 
 	@BlockRegistry
 	public static BlockCable cable;
@@ -26,8 +26,4 @@ public class BlockCable extends Block implements IGridConnection {
 		setUnlocalizedName(getRegistryName().toString());
 	}
 
-	@Override
-	public boolean handleLogic() {
-		return false;
-	}
 }
