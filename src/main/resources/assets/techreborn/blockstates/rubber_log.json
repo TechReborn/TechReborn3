@@ -1,0 +1,69 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "techreborn:log",
+    "textures": {
+      "end": "techreborn:block/rubber_log_top",
+      "side": "techreborn:block/rubber_log_side",
+      "sap": "techreborn:block/rubber_log_sap"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {
+        "transform": "forge:default-block",
+        "model": "techreborn:cable",
+        "textures": {
+        }
+      }
+    ],
+    "axis=x,sapside=none": [
+      {
+        "transform": {
+          "rotation": [
+            {
+              "z": 90
+            }
+          ]
+        }
+      }
+    ],
+    "axis=z,sapside=none": [
+      {
+        "x": 90
+      }
+    ],
+    "axis=y,sapside=none": [
+      {
+      }
+    ],
+    "axis=y,sapside=north": [
+      {
+        "model": "techreborn:log_sap"
+      }
+    ],
+    "axis=y,sapside=south": [
+      {
+        "model": "techreborn:log_sap",
+        "y": 180
+      }
+    ],
+    "axis=y,sapside=east": [
+      {
+        "model": "techreborn:log_sap",
+        "y": 90
+      }
+    ],
+    "axis=y,sapside=west": [
+      {
+        "model": "techreborn:log_sap",
+        "y": 270
+      }
+    ],
+    "axis=none,sapside=none": [
+      {
+      }
+    ]
+  }
+}

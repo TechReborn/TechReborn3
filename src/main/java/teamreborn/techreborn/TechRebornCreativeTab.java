@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by Mark on 22/04/2017.
  */
-public class TechRebornCreativeTab  {
-	public static final CreativeTabs TECHREBORN = new CreativeTabs(TRConstants.MOD_NAME) {
+public class TechRebornCreativeTab {
+	public static final CreativeTabs TECHREBORN = new CreativeTabs(TRConstants.MOD_ID) {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
 			return new ItemStack(Items.BUCKET);
