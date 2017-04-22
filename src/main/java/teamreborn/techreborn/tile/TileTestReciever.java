@@ -36,7 +36,7 @@ public class TileTestReciever extends TileEntity implements IGridReciever  {
 
 		@Override
 	public void handlePower(double power, double powerRatio) {
-		System.out.println("power: " + power + " ratio: " + powerRatio);
+		//System.out.println("power: " + power + " ratio: " + powerRatio);
 	}
 
 	@Override

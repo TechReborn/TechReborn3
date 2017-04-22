@@ -3,6 +3,7 @@ package teamreborn.techreborn.tile;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import teamreborn.reborncore.api.power.GridJoinEvent;
+import teamreborn.reborncore.api.power.GridLeaveEvent;
 import teamreborn.reborncore.api.power.IGridProvider;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.TileRegistry;
@@ -43,5 +44,11 @@ public class TileTestProvider extends TileEntity implements IGridProvider {
 	public void onLoad() {
 		super.onLoad();
 		MinecraftForge.EVENT_BUS.post(new GridJoinEvent(world, pos, this));
+	}
+
+	@Override
+	public void invalidate() {
+		super.invalidate();
+		MinecraftForge.EVENT_BUS.post(new GridLeaveEvent(world, pos, this));
 	}
 }
