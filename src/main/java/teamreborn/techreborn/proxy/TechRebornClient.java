@@ -8,12 +8,14 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import teamreborn.techreborn.TRConstants;
+import teamreborn.techreborn.TechReborn;
+import teamreborn.techreborn.blocks.BlockCable;
+import teamreborn.techreborn.blocks.BlockRubberLog;
 
 /**
  * Created by Prospector
  */
 public class TechRebornClient extends TechRebornServer {
-
 	static void registerItemModel(Item i, int meta) {
 		ResourceLocation loc = i.getRegistryName();
 		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "inventory"));
@@ -82,6 +84,19 @@ public class TechRebornClient extends TechRebornServer {
 	private static void registerBlockstateMultiItem(Item item, String variantName, String path) {
 		ResourceLocation loc = new ResourceLocation(TRConstants.MOD_ID, path);
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(loc, "type=" + variantName));
+	}
+
+	@Override
+	public void registerRenders() {
+		registerItemModel(BlockCable.cable, 0);
+		registerItemModel(BlockRubberLog.rubber_log, 0);
+
+		for (Item item : TechReborn.itemModelsToRegister) {
+			registerItemModel(item, 0);
+		}
+		for (Block block : TechReborn.blockModelsToRegister) {
+			registerItemModel(block, 0);
+		}
 	}
 
 	@Override

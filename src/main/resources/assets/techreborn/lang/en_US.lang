@@ -1,4 +1,8 @@
 itemGroup.techreborn=Tech Reborn 3
 
+item.techreborn:wrench.name=Wrench
+item.techreborn:wooden_hammer.name=Wooden Hammer
+
 tile.techreborn:cable.name=Cable
 tile.techreborn:rubber_log.name=Rubber Wood
+tile.techreborn:treetap.name=Tree Tap

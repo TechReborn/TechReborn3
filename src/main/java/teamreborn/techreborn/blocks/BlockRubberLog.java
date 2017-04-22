@@ -5,6 +5,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ResourceLocation;
 import teamreborn.reborncore.api.registry.RebornRegistry;
@@ -29,6 +30,21 @@ public class BlockRubberLog extends BlockLog {
 		setCreativeTab(TechRebornCreativeTab.TECHREBORN);
 		setUnlocalizedName(getRegistryName().toString());
 		setDefaultState(this.blockState.getBaseState().withProperty(SAP_SIDE, EnumSapSide.NONE).withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));
+	}
+
+	public static EnumSapSide getSideFromFacing(EnumFacing facing) {
+		switch (facing) {
+			case EAST:
+				return EnumSapSide.EAST;
+			case WEST:
+				return EnumSapSide.WEST;
+			case NORTH:
+				return EnumSapSide.NORTH;
+			case SOUTH:
+				return EnumSapSide.SOUTH;
+			default:
+				return EnumSapSide.NONE;
+		}
 	}
 
 	protected BlockStateContainer createBlockState() { return new BlockStateContainer(this, new IProperty[] { LOG_AXIS, SAP_SIDE }); }
