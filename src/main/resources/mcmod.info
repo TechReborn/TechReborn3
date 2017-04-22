@@ -1,0 +1,15 @@
+[{
+  "modid": "techreborn",
+  "name": "Tech Reborn 3",
+  "description": "A mod based around automation and progression. [Someday someone please make a better description]",
+  "version": "$version",
+  "mcversion": "$mcversion",
+  "url": "https://github.com/TechReborn/TechReborn3",
+  "updateUrl": "",
+  "authorList": [ "modmuss50", "Prospector", "Ourten", "Gigabit101" ],
+  "credits": "(Tech Reborn 1 & 2) TheMattaBase, Mj11jM, Mazdallier, tntrololol, joflashstudios, Rushmead, Yulife, drcrazy, lclc98, Lordmau5, mezz, Thog, and covers1624",
+  "logoFile": "logo.png",
+  "screenshots": [ ],
+  "parent":"",
+  "dependencies": [ ]
+}]
