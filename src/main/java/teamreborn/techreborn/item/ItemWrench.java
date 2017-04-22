@@ -17,7 +17,7 @@ import teamreborn.techreborn.TRConstants;
 public class ItemWrench extends ItemTR {
 
 	@ItemRegistry
-	public static ItemWoodenHammer wrench;
+	public static ItemWrench wrench;
 
 	public ItemWrench() {
 		super("wrench");

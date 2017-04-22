@@ -4,16 +4,17 @@
     "transform": "forge:default-block",
     "model": "techreborn:treetap",
     "textures": {
-      "treetap": "techreborn:block/treetap"
+      "treetap": "techreborn:block/treetap",
+      "particle": "techreborn:block/treetap"
     }
   },
   "variants": {
     "inventory": [
       {
-        "transform": "forge:default-item",
-        "model": "item/generated",
+        "transform": "forge:default-tool",
+        "model": "techreborn:item_tool",
         "textures": {
-          "layer_0": "techreborn:item/treetap"
+          "texture": "techreborn:item/treetap"
         }
       }
     ],
@@ -23,17 +24,17 @@
     ],
     "facing=south": [
       {
-        "x": 180
+        "y": 180
       }
     ],
     "facing=east": [
       {
-        "x": 90
+        "y": 90
       }
     ],
     "facing=west": [
       {
-        "x": 270
+        "y": 270
       }
     ]
   }

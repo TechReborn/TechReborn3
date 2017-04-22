@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "techreborn:item/wrench"
+    "layer0": "#texture"
   }
 }

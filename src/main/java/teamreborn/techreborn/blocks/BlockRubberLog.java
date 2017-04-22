@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
+import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
 
 /**
@@ -30,6 +31,8 @@ public class BlockRubberLog extends BlockLog {
 		setCreativeTab(TechRebornCreativeTab.TECHREBORN);
 		setUnlocalizedName(getRegistryName().toString());
 		setDefaultState(this.blockState.getBaseState().withProperty(SAP_SIDE, EnumSapSide.NONE).withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));
+		TechReborn.blockModelsToRegister.add(this);
+
 	}
 
 	public static EnumSapSide getSideFromFacing(EnumFacing facing) {

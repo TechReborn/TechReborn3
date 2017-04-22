@@ -21,6 +21,7 @@ import teamreborn.reborncore.api.power.IGridConnection;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
+import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
 
 /**
@@ -45,6 +46,7 @@ public class BlockCable extends Block {
 		setCreativeTab(TechRebornCreativeTab.TECHREBORN);
 		setUnlocalizedName(getRegistryName().toString());
 		setDefaultState(getDefaultState().withProperty(EAST, false).withProperty(WEST, false).withProperty(NORTH, false).withProperty(SOUTH, false).withProperty(UP, false).withProperty(DOWN, false));
+		TechReborn.blockModelsToRegister.add(this);
 	}
 
 	@Override

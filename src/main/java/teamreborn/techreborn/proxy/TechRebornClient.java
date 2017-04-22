@@ -88,9 +88,6 @@ public class TechRebornClient extends TechRebornServer {
 
 	@Override
 	public void registerRenders() {
-		registerItemModel(BlockCable.cable, 0);
-		registerItemModel(BlockRubberLog.rubber_log, 0);
-
 		for (Item item : TechReborn.itemModelsToRegister) {
 			registerItemModel(item, 0);
 		}

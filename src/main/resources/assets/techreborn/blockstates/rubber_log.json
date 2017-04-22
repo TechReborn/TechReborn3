@@ -13,7 +13,7 @@
     "inventory": [
       {
         "transform": "forge:default-block",
-        "model": "techreborn:cable",
+        "model": "techreborn:log",
         "textures": {
         }
       }

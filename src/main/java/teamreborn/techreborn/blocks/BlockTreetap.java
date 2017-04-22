@@ -1,6 +1,7 @@
 package teamreborn.techreborn.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -9,31 +10,40 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
+import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by Mark on 22/04/2017.
+ * Created by Prospector
  */
 @RebornRegistry(modID = TRConstants.MOD_ID)
 public class BlockTreetap extends Block {
 
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	private static final AxisAlignedBB eastAABB = new AxisAlignedBB(0, 0, 0, 1, 1, 1);
 
-	@BlockRegistry
+	@BlockRegistry(itemBlock = "teamreborn.techreborn.item.ItemTreetap")
 	public static BlockTreetap treetap;
 
 	public BlockTreetap() {
-		super(Material.ROCK);
+		super(Material.WOOD);
 		setRegistryName(new ResourceLocation(TRConstants.MOD_ID, "treetap"));
 		setCreativeTab(TechRebornCreativeTab.TECHREBORN);
 		setUnlocalizedName(getRegistryName().toString());
 		setDefaultState(getDefaultState().withProperty(FACING, EnumFacing.NORTH));
+		setSoundType(SoundType.WOOD);
+		TechReborn.blockModelsToRegister.add(this);
 	}
 
 	@Override
@@ -42,8 +52,15 @@ public class BlockTreetap extends Block {
 	}
 
 	@Override
-	public int damageDropped(IBlockState state) {
-		return getMetaFromState(getDefaultState());
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		List<ItemStack> list = new ArrayList<>();
+		list.add(ItemStack.EMPTY);
+		return list;
+	}
+
+	@Override
+	protected boolean canSilkHarvest() {
+		return false;
 	}
 
 	@Override
@@ -62,15 +79,8 @@ public class BlockTreetap extends Block {
 	}
 
 	@Override
-	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		if (side == EnumFacing.UP || side == EnumFacing.DOWN)
-			return false;
-		return super.canPlaceBlockOnSide(worldIn, pos, side);
-	}
-
-	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		return getDefaultState().withProperty(FACING, facing);
+		return getDefaultState().withProperty(FACING, facing.getOpposite());
 	}
 
 	@Override
@@ -82,6 +92,11 @@ public class BlockTreetap extends Block {
 		}
 
 		return this.getDefaultState().withProperty(FACING, enumfacing);
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return new AxisAlignedBB(0, 0, 0, 1, 1, 1);
 	}
 
 	@Override
