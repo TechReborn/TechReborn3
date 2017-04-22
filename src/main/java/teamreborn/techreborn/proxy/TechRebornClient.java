@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import teamreborn.techreborn.TechReborn;
+import teamreborn.techreborn.TRConstants;
 
 /**
  * Created by Prospector
@@ -35,7 +35,7 @@ public class TechRebornClient extends TechRebornServer {
 
 	private static void register(Item item, int meta, String name) {
 		ModelLoader.setCustomModelResourceLocation(item, meta,
-			new ModelResourceLocation(TechReborn.MOD_CL.getPrefix() + name, "inventory"));
+			new ModelResourceLocation(TRConstants.MOD_ID + name, "inventory"));
 	}
 
 	static void registerItemModel(Block b, int meta) {
@@ -67,7 +67,7 @@ public class TechRebornClient extends TechRebornServer {
 	}
 
 	private static void registerBlockstate(Item i, int meta, String variant, String dir) {
-		ResourceLocation loc = new ResourceLocation(TechReborn.MOD_CL.getModID(), dir + i.getRegistryName().getResourcePath());
+		ResourceLocation loc = new ResourceLocation(TRConstants.MOD_ID, dir + i.getRegistryName().getResourcePath());
 		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "type=" + variant));
 	}
 
@@ -80,18 +80,8 @@ public class TechRebornClient extends TechRebornServer {
 	}
 
 	private static void registerBlockstateMultiItem(Item item, String variantName, String path) {
-		ResourceLocation loc = new ResourceLocation(TechReborn.MOD_CL.getModID(), path);
+		ResourceLocation loc = new ResourceLocation(TRConstants.MOD_ID, path);
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(loc, "type=" + variantName));
-	}
-
-	@Override
-	public void registerRenders() {
-		for (Item item : TechReborn.MOD_CL.itemModelsToRegister) {
-			registerItemModel(item, 0);
-		}
-		for (Block block : TechReborn.MOD_CL.blockModelsToRegister) {
-			registerItemModel(block, 0);
-		}
 	}
 
 	@Override
