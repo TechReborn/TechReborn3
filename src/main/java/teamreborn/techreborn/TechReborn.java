@@ -9,7 +9,7 @@ import teamreborn.techreborn.proxy.TechRebornServer;
 public class TechReborn {
 
 	@Mod.Instance(TRConstants.MOD_ID)
-	public static TechReborn MOD_CL;
+	public static TechReborn INSTANCE;
 	@SidedProxy(clientSide = TRConstants.CLIENT_PROXY_CLASS, serverSide = TRConstants.SERVER_PROXY_CLASS)
 	public static TechRebornServer PROXY;
 
