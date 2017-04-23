@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import teamreborn.reborncore.api.registry.LoadOrderedRegistry;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
@@ -18,6 +19,7 @@ import teamreborn.techreborn.TechRebornCreativeTab;
  * Created by Prospector
  */
 @RebornRegistry(TRConstants.MOD_ID)
+@LoadOrderedRegistry("before:teamreborn.techreborn.blocks.BlockCable")
 public class BlockBarrel extends Block {
 
 	@BlockRegistry
