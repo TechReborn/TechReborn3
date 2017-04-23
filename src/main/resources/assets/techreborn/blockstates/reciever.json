@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "cube_all",
+    "textures": {
+      "all": "techreborn:block/reciever"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "techreborn:block/reciever"
+        }
+      }
+    ],
+    "normal": [
+      {
+      }
+    ]
+  }
+}

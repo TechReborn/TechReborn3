@@ -19,7 +19,6 @@ import teamreborn.techreborn.TechRebornCreativeTab;
  * Created by Prospector
  */
 @RebornRegistry(TRConstants.MOD_ID)
-@LoadOrderedRegistry("before:teamreborn.techreborn.blocks.BlockCable")
 public class BlockBarrel extends Block {
 
 	@BlockRegistry

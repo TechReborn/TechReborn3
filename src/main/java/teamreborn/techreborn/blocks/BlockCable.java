@@ -18,6 +18,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import teamreborn.reborncore.api.power.IGridConnection;
+import teamreborn.reborncore.api.registry.LoadOrderedRegistry;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;

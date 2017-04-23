@@ -5,9 +5,14 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.classloading.FMLForgePlugin;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
@@ -124,6 +129,14 @@ public class BlockRubberLog extends BlockLog {
 		}
 
 		return iblockstate;
+	}
+
+	@Override
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		if (!FMLForgePlugin.RUNTIME_DEOBF && placer instanceof EntityPlayer && ((EntityPlayer) placer).isCreative() && placer.isSneaking()) {
+			return getDefaultState().withProperty(SAP_SIDE, getSideFromFacing(placer.getHorizontalFacing().getOpposite()));
+		}
+		return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
 	}
 
 	public enum EnumSapSide implements IStringSerializable {

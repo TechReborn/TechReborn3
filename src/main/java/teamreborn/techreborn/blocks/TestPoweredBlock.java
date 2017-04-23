@@ -16,6 +16,7 @@ import teamreborn.reborncore.api.power.IGridConnection;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
+import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
 import teamreborn.techreborn.tile.TileTestProvider;
 import teamreborn.techreborn.tile.TileTestReciever;
@@ -42,12 +43,13 @@ public class TestPoweredBlock extends BlockContainer {
 		setRegistryName(new ResourceLocation(TRConstants.MOD_ID, type));
 		setCreativeTab(TechRebornCreativeTab.TECHREBORN);
 		setUnlocalizedName(getRegistryName().toString());
+		TechReborn.blockModelsToRegister.add(this);
 	}
 
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		if(type.equals("reciever")){
+		if (type.equals("reciever")) {
 			return new TileTestReciever();
 		}
 		return new TileTestProvider();
@@ -61,9 +63,9 @@ public class TestPoweredBlock extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
-		if(!worldIn.isRemote && hand == EnumHand.MAIN_HAND){
-			if(tileEntity instanceof IGridConnection){
-				if(((IGridConnection) tileEntity).getPowerGrid() != null){
+		if (!worldIn.isRemote && hand == EnumHand.MAIN_HAND) {
+			if (tileEntity instanceof IGridConnection) {
+				if (((IGridConnection) tileEntity).getPowerGrid() != null) {
 					playerIn.sendMessage(new TextComponentString(((IGridConnection) tileEntity).getPowerGrid().name));
 				} else {
 					playerIn.sendMessage(new TextComponentString("null"));

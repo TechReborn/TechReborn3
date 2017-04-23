@@ -14,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import teamreborn.reborncore.api.registry.LoadOrderedRegistry;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.ItemRegistry;
 import teamreborn.techreborn.TRConstants;
