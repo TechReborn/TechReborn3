@@ -7,3 +7,6 @@ tile.techreborn:cable.name=Cable
 tile.techreborn:rubber_log.name=Rubber Wood
 tile.techreborn:treetap.name=Rubber Tree Tap
 tile.techreborn:barrel.name=Wooden Barrel
+
+fluid.sap=Sap
+fluid.biomass=Biomass

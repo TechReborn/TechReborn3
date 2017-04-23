@@ -2,6 +2,8 @@ package teamreborn.techreborn;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,6 +24,7 @@ public class TechReborn {
 	public static TechRebornServer PROXY;
 	public static List<Item> itemModelsToRegister = new ArrayList<>();
 	public static List<Block> blockModelsToRegister = new ArrayList<>();
+	public static List<BlockFluidClassic> fluidModelsToRegister = new ArrayList<>();
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
