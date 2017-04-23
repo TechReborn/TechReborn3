@@ -9,19 +9,21 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import teamreborn.reborncore.api.registry.LoadOrderedRegistry;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
 import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
+import teamreborn.techreborn.tile.TileTreetap;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +38,6 @@ public class BlockTreetap extends Block {
 	private static final AxisAlignedBB westAABB = new AxisAlignedBB(0, 0.1250, 0.59375, 0.3975, 0.375, 0.34375);
 	private static final AxisAlignedBB southAABB = new AxisAlignedBB(0.59375, 0.1250, 1, 0.34375, 0.375, 0.6025);
 	private static final AxisAlignedBB eastAABB = new AxisAlignedBB(1, 0.1250, 0.40625, 0.6025, 0.375, 0.65625);
-
 	@BlockRegistry(itemBlock = "teamreborn.techreborn.item.ItemTreetap")
 	public static BlockTreetap treetap;
 
@@ -48,6 +49,12 @@ public class BlockTreetap extends Block {
 		setDefaultState(getDefaultState().withProperty(FACING, EnumFacing.NORTH));
 		setSoundType(SoundType.WOOD);
 		TechReborn.blockModelsToRegister.add(this);
+	}
+
+	@Nullable
+	@Override
+	public TileEntity createTileEntity(World world, IBlockState state) {
+		return new TileTreetap();
 	}
 
 	@Override

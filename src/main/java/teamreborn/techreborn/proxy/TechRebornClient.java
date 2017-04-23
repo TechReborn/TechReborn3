@@ -4,13 +4,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.BlockFluidClassic;
 import teamreborn.techreborn.TRConstants;
 import teamreborn.techreborn.TechReborn;
-import teamreborn.techreborn.blocks.BlockCable;
-import teamreborn.techreborn.blocks.BlockRubberLog;
+import teamreborn.techreborn.fluids.TechRebornFluids;
 
 /**
  * Created by Prospector
@@ -86,6 +87,13 @@ public class TechRebornClient extends TechRebornServer {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(loc, "type=" + variantName));
 	}
 
+	private static void registerFluid(BlockFluidClassic fluid) {
+		final ModelResourceLocation location = new ModelResourceLocation(TRConstants.MOD_ID + ":fluids", fluid.getFluid().getName().toLowerCase());
+		ModelLoader.setCustomStateMapper(fluid, new StateMapperBase() {
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) { return location; }
+		});
+	}
+
 	@Override
 	public void registerRenders() {
 		for (Item item : TechReborn.itemModelsToRegister) {
@@ -94,6 +102,8 @@ public class TechRebornClient extends TechRebornServer {
 		for (Block block : TechReborn.blockModelsToRegister) {
 			registerItemModel(block, 0);
 		}
+		registerFluid(TechRebornFluids.BIOMASS.block);
+		registerFluid(TechRebornFluids.SAP.block);
 	}
 
 	@Override

@@ -20,7 +20,7 @@ import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
 
 /**
- * Created by Mark on 22/04/2017.
+ * Created by Prospector
  */
 @RebornRegistry(TRConstants.MOD_ID)
 public class BlockRubberLog extends BlockLog {
