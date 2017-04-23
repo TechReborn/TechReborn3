@@ -1,0 +1,32 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "techreborn:barrel",
+    "textures": {
+      "side": "techreborn:block/barrel/barrel_side",
+      "inside": "techreborn:block/barrel/barrel_inside",
+      "top": "techreborn:block/barrel/barrel_top",
+      "bottom": "techreborn:block/barrel/barrel_bottom",
+      "particle": "techreborn:block/barrel/barrel_side"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {
+        "transform": "forge:default-block",
+        "model": "techreborn:barrel",
+        "textures": {
+          "side": "techreborn:block/barrel/barrel_side",
+          "inside": "techreborn:block/barrel/barrel_inside",
+          "top": "techreborn:block/barrel/barrel_top",
+          "bottom": "techreborn:block/barrel/barrel_bottom"
+        }
+      }
+    ],
+    "normal": [
+      {
+      }
+    ]
+  }
+}

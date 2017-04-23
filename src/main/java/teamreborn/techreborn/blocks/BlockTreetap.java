@@ -31,7 +31,10 @@ import java.util.List;
 public class BlockTreetap extends Block {
 
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-	private static final AxisAlignedBB eastAABB = new AxisAlignedBB(0, 0, 0, 1, 1, 1);
+	private static final AxisAlignedBB northAABB = new AxisAlignedBB(0.40625, 0.1250, 0, 0.65625, 0.375, 0.3975);
+	private static final AxisAlignedBB westAABB = new AxisAlignedBB(0, 0.1250, 0.59375, 0.3975, 0.375, 0.34375);
+	private static final AxisAlignedBB southAABB = new AxisAlignedBB(0.59375, 0.1250, 1, 0.34375, 0.375, 0.6025);
+	private static final AxisAlignedBB eastAABB = new AxisAlignedBB(1, 0.1250, 0.40625, 0.6025, 0.375, 0.65625);
 
 	@BlockRegistry(itemBlock = "teamreborn.techreborn.item.ItemTreetap")
 	public static BlockTreetap treetap;
@@ -44,6 +47,17 @@ public class BlockTreetap extends Block {
 		setDefaultState(getDefaultState().withProperty(FACING, EnumFacing.NORTH));
 		setSoundType(SoundType.WOOD);
 		TechReborn.blockModelsToRegister.add(this);
+	}
+
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		if (placer.getHeldItem(EnumHand.MAIN_HAND).equals(stack)) {
+			placer.getHeldItem(EnumHand.OFF_HAND).damageItem(1, placer);
+		}
+		if (placer.getHeldItem(EnumHand.OFF_HAND).equals(stack)) {
+			placer.getHeldItem(EnumHand.MAIN_HAND).damageItem(1, placer);
+		}
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 
 	@Override
@@ -96,6 +110,18 @@ public class BlockTreetap extends Block {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		if (state.getValue(FACING) == EnumFacing.NORTH) {
+			return northAABB;
+		}
+		if (state.getValue(FACING) == EnumFacing.EAST) {
+			return eastAABB;
+		}
+		if (state.getValue(FACING) == EnumFacing.SOUTH) {
+			return southAABB;
+		}
+		if (state.getValue(FACING) == EnumFacing.WEST) {
+			return westAABB;
+		}
 		return new AxisAlignedBB(0, 0, 0, 1, 1, 1);
 	}
 
