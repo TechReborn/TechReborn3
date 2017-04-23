@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Mark on 22/04/2017.
  */
-@RebornRegistry(modID = TRConstants.MOD_ID)
+@RebornRegistry(TRConstants.MOD_ID)
 public class TestPoweredBlock extends BlockContainer {
 
 	@BlockRegistry(param = "provider")

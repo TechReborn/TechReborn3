@@ -23,7 +23,7 @@ import teamreborn.techreborn.blocks.BlockTreetap;
 /**
  * Created by Prospector
  */
-@RebornRegistry(modID = TRConstants.MOD_ID)
+@RebornRegistry(TRConstants.MOD_ID)
 public class ItemWoodenHammer extends ItemTR {
 
 	@ItemRegistry

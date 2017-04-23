@@ -27,7 +27,7 @@ import teamreborn.techreborn.TechRebornCreativeTab;
 /**
  * Created by Mark on 22/04/2017.
  */
-@RebornRegistry(modID = TRConstants.MOD_ID)
+@RebornRegistry(TRConstants.MOD_ID)
 public class BlockCable extends Block {
 
 	public static final PropertyBool EAST = PropertyBool.create("east");

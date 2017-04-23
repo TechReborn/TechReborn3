@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Mark on 22/04/2017.
  */
-@RebornRegistry(modID = TRConstants.MOD_ID)
+@RebornRegistry(TRConstants.MOD_ID)
 @TileRegistry(name = "tileTestReciever")
 public class TileTestReciever extends TileEntity implements IGridReciever  {
 

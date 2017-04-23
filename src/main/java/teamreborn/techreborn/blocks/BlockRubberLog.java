@@ -17,7 +17,7 @@ import teamreborn.techreborn.TechRebornCreativeTab;
 /**
  * Created by Mark on 22/04/2017.
  */
-@RebornRegistry(modID = TRConstants.MOD_ID)
+@RebornRegistry(TRConstants.MOD_ID)
 public class BlockRubberLog extends BlockLog {
 
 	public static PropertyEnum<EnumSapSide> SAP_SIDE = PropertyEnum.create("sapside", EnumSapSide.class);

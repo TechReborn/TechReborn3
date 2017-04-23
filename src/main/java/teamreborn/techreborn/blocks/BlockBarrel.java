@@ -17,7 +17,7 @@ import teamreborn.techreborn.TechRebornCreativeTab;
 /**
  * Created by Prospector
  */
-@RebornRegistry(modID = TRConstants.MOD_ID)
+@RebornRegistry(TRConstants.MOD_ID)
 public class BlockBarrel extends Block {
 
 	@BlockRegistry
