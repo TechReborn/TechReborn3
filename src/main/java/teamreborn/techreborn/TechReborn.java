@@ -2,12 +2,14 @@ package teamreborn.techreborn;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSlab;
 import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import teamreborn.techreborn.blocks.decoration.BlockRubberStairs;
 import teamreborn.techreborn.commands.CommandTechRebornTest;
 import teamreborn.techreborn.proxy.TechRebornServer;
 import teamreborn.techreborn.world.TechRebornWorld;
@@ -33,7 +35,7 @@ public class TechReborn {
 	}
 
 	@Mod.EventHandler
-	public void serverStarting(FMLServerStartingEvent event){
+	public void serverStarting(FMLServerStartingEvent event) {
 		event.registerServerCommand(new CommandTechRebornTest());
 	}
 
