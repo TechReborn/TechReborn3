@@ -11,7 +11,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -22,8 +21,8 @@ import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
 import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
-import teamreborn.techreborn.transmission.EnumFrequency;
-import teamreborn.techreborn.transmission.ITransmissionReciever;
+import teamreborn.reborncore.transmission.EnumFrequency;
+import teamreborn.reborncore.transmission.ITransmissionReciever;
 
 import javax.annotation.Nullable;
 
@@ -62,17 +61,17 @@ public class BlockTLever extends Block {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (worldIn.isRemote) {
 			return true;
-		} else {
-			state = state.cycleProperty(POWERED);
-			worldIn.setBlockState(pos, state, 3);
-			float f = ((Boolean) state.getValue(POWERED)).booleanValue() ? 0.6F : 0.5F;
-			worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
-			TileEntity tileEntity = worldIn.getTileEntity(pos.down());
-			if (tileEntity instanceof ITransmissionReciever) {
-				((ITransmissionReciever) tileEntity).setPowered(EnumFrequency.ALPHA, !((ITransmissionReciever) tileEntity).getValidFrequencies().get(0).isPowered());
-			}
-			return true;
 		}
+		state = state.cycleProperty(POWERED);
+		worldIn.setBlockState(pos, state, 3);
+		float f = ((Boolean) state.getValue(POWERED)).booleanValue() ? 0.6F : 0.5F;
+		worldIn.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
+		for (EnumFacing offset : EnumFacing.values()) {
+			if (worldIn.getTileEntity(pos.offset(offset)) instanceof ITransmissionReciever) {
+				((ITransmissionReciever) worldIn.getTileEntity(pos.offset(offset))).setPowered(EnumFrequency.ALPHA, state.getValue(POWERED));
+			}
+		}
+		return true;
 	}
 
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
