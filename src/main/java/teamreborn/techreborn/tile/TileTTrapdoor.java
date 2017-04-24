@@ -3,11 +3,11 @@ package teamreborn.techreborn.tile;
 import net.minecraft.tileentity.TileEntity;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.TileRegistry;
-import teamreborn.techreborn.TRConstants;
-import teamreborn.techreborn.blocks.BlockTTrapdoor;
 import teamreborn.reborncore.transmission.EnumFrequency;
 import teamreborn.reborncore.transmission.Frequency;
 import teamreborn.reborncore.transmission.ITransmissionReciever;
+import teamreborn.techreborn.TRConstants;
+import teamreborn.techreborn.blocks.BlockTTrapdoor;
 
 import java.util.ArrayList;
 import java.util.List;

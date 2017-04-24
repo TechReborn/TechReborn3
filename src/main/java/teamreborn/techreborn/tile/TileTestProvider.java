@@ -19,7 +19,6 @@ import javax.annotation.Nullable;
 @TileRegistry(name = "tileTestProvider")
 public class TileTestProvider extends TileEntity implements IGridProvider {
 
-
 	PowerGrid grid;
 
 	@Override

@@ -98,7 +98,6 @@ public class BlockRubberLog extends BlockLog {
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = this.getDefaultState();
 
-		EnumSapSide side;
 		switch (meta) {
 			case 0:
 				iblockstate = iblockstate.withProperty(LOG_AXIS, EnumAxis.X);

@@ -16,7 +16,7 @@ public class TechRebornWorld {
 	public static RubberPlantationBiome rubberPlantationBiome;
 
 	@CustomRegistry
-	public static void init(){
+	public static void init() {
 		Biome.BiomeProperties properties = new Biome.BiomeProperties("Rubber Plantation");
 		properties.setTemperature(0.95F);
 		properties.setRainfall(0.95F);

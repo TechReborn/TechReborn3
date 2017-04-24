@@ -16,10 +16,9 @@ import javax.annotation.Nullable;
  */
 @RebornRegistry(TRConstants.MOD_ID)
 @TileRegistry(name = "tileTestReciever")
-public class TileTestReciever extends TileEntity implements IGridReciever  {
+public class TileTestReciever extends TileEntity implements IGridReciever {
 
 	PowerGrid grid;
-
 
 	@Nullable
 	@Override
@@ -34,7 +33,7 @@ public class TileTestReciever extends TileEntity implements IGridReciever  {
 		this.grid = powerGrid;
 	}
 
-		@Override
+	@Override
 	public void handlePower(double power, double powerRatio) {
 		//System.out.println("power: " + power + " ratio: " + powerRatio);
 	}
