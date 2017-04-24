@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -18,11 +19,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
+import teamreborn.reborncore.transmission.EnumFrequency;
+import teamreborn.reborncore.transmission.ITransmissionReciever;
 import teamreborn.techreborn.TRConstants;
 import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
-import teamreborn.reborncore.transmission.EnumFrequency;
-import teamreborn.reborncore.transmission.ITransmissionReciever;
 
 import javax.annotation.Nullable;
 
@@ -68,7 +69,8 @@ public class BlockTLever extends Block {
 		worldIn.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
 		for (EnumFacing offset : EnumFacing.values()) {
 			if (worldIn.getTileEntity(pos.offset(offset)) instanceof ITransmissionReciever) {
-				((ITransmissionReciever) worldIn.getTileEntity(pos.offset(offset))).setPowered(EnumFrequency.ALPHA, state.getValue(POWERED));
+				TileEntity tileEntity = worldIn.getTileEntity(pos.offset(offset));
+				((ITransmissionReciever) tileEntity).setPowered(EnumFrequency.ALPHA, state.getValue(POWERED));
 			}
 		}
 		return true;
