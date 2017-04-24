@@ -12,5 +12,6 @@ public class RubberPlantationDecorator extends BiomeDecorator {
 		extraTreeChance = 0.2F;
 		flowersPerChunk = 0;
 		grassPerChunk = 20;
+		waterlilyPerChunk = 10;
 	}
 }
