@@ -4,18 +4,26 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidStack;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
 import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
+import teamreborn.techreborn.fluids.TechRebornFluids;
 import teamreborn.techreborn.tile.TileBarrel;
 
 import javax.annotation.Nullable;
@@ -25,6 +33,8 @@ import javax.annotation.Nullable;
  */
 @RebornRegistry(TRConstants.MOD_ID)
 public class BlockBarrel extends Block implements ITileEntityProvider {
+
+	public static final PropertyInteger FILLED_HEIGHT = PropertyInteger.create("filled", 0, 4);
 
 	@BlockRegistry
 	public static BlockBarrel barrel;
@@ -41,10 +51,19 @@ public class BlockBarrel extends Block implements ITileEntityProvider {
 		TechReborn.blockModelsToRegister.add(this);
 	}
 
-	@Nullable
 	@Override
-	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileBarrel();
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		TileBarrel tile = (TileBarrel) worldIn.getTileEntity(pos);
+		return super.getActualState(state, worldIn, pos);
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (worldIn.isRemote)
+			return true;
+		((TileBarrel) worldIn.getTileEntity(pos)).tank.fill(new FluidStack(TechRebornFluids.SAP.fluid, 100), true);
+		playerIn.sendMessage(new TextComponentString(TextFormatting.GRAY + "Sap Amount: " + TextFormatting.GOLD + ((TileBarrel) worldIn.getTileEntity(pos)).tank.getFluidAmount()));
+		return true;
 	}
 
 	@Nullable
