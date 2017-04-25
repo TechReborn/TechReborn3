@@ -1,6 +1,7 @@
 package teamreborn.techreborn.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -9,6 +10,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -18,18 +21,20 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import teamreborn.reborncore.api.power.IGridConnection;
-import teamreborn.reborncore.api.registry.LoadOrderedRegistry;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.BlockRegistry;
 import teamreborn.techreborn.TRConstants;
 import teamreborn.techreborn.TechReborn;
 import teamreborn.techreborn.TechRebornCreativeTab;
+import teamreborn.techreborn.tile.TileCable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by Mark on 22/04/2017.
  */
 @RebornRegistry(TRConstants.MOD_ID)
-public class BlockCable extends Block {
+public class BlockCable extends BlockContainer {
 
 	public static final PropertyBool EAST = PropertyBool.create("east");
 	public static final PropertyBool WEST = PropertyBool.create("west");
@@ -92,14 +97,13 @@ public class BlockCable extends Block {
 
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		state = state.getActualState(source, pos);
-		float f = 0.3125F;
-		float f1 = ((Boolean) state.getValue(WEST)).booleanValue() ? 0.0F : 0.3125F;
-		float f2 = ((Boolean) state.getValue(DOWN)).booleanValue() ? 0.0F : 0.3125F;
-		float f3 = ((Boolean) state.getValue(NORTH)).booleanValue() ? 0.0F : 0.3125F;
-		float f4 = ((Boolean) state.getValue(EAST)).booleanValue() ? 1.0F : 0.6875F;
-		float f5 = ((Boolean) state.getValue(UP)).booleanValue() ? 1.0F : 0.6875F;
-		float f6 = ((Boolean) state.getValue(SOUTH)).booleanValue() ? 1.0F : 0.6875F;
-		return new AxisAlignedBB((double) f1, (double) f2, (double) f3, (double) f4, (double) f5, (double) f6);
+		float minX = state.getValue(WEST) ? 0.0F : 0.3125F;
+		float minY = state.getValue(DOWN) ? 0.0F : 0.3125F;
+		float minZ = state.getValue(NORTH) ? 0.0F : 0.3125F;
+		float maxX = state.getValue(EAST) ? 1.0F : 0.6875F;
+		float maxY = state.getValue(UP) ? 1.0F : 0.6875F;
+		float maxZ = state.getValue(SOUTH) ? 1.0F : 0.6875F;
+		return new AxisAlignedBB((double) minX, (double) minY, (double) minZ, (double) maxX, (double) maxY, (double) maxZ);
 	}
 
 	@Override
@@ -133,4 +137,14 @@ public class BlockCable extends Block {
 		}
 	}
 
+	@Nullable
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileCable();
+	}
+
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.MODEL;
+	}
 }
