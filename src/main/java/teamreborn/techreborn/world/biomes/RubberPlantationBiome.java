@@ -13,7 +13,22 @@ public class RubberPlantationBiome extends Biome {
 
 	@Override
 	public int getWaterColorMultiplier() {
-		return 17777215;
+		return 0xFF1F3E87;
+	}
+
+	@Override
+	public int getModdedBiomeGrassColor(int original) {
+		return 0xFF84C809;
+	}
+
+	@Override
+	public int getSkyColorByTemp(float currentTemperature) {
+		return 0xFF7CBACC;
+	}
+
+	@Override
+	public int getModdedBiomeFoliageColor(int original) {
+		return 0xFF277F07;
 	}
 
 	@Override

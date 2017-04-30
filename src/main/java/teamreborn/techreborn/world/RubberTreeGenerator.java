@@ -21,7 +21,7 @@ public class RubberTreeGenerator extends WorldGenerator {
 	boolean isWorldGen = true;
 	public int sapRarity = 10;
 	public int spireHeight = 4;
-	public int treeBaseHeight = 5;
+	public int treeBaseHeight = 12;
 
 	public RubberTreeGenerator() {
 		super();
