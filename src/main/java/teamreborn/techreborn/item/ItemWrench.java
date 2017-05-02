@@ -8,6 +8,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import teamreborn.reborncore.api.registry.RebornRegistry;
 import teamreborn.reborncore.api.registry.impl.ItemRegistry;
+import teamreborn.reborncore.reborninfoprovider.RebornInfoProviderHUD;
+import teamreborn.reborncore.reborninfoprovider.elements.BlockDisplayElement;
 import teamreborn.techreborn.TRConstants;
 
 /**
@@ -27,6 +29,9 @@ public class ItemWrench extends ItemTR {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (world.isRemote) {
+			RebornInfoProviderHUD.addElement(new BlockDisplayElement());
+		}
 		if (!world.isRemote && player.isSneaking()) {
 			return EnumActionResult.SUCCESS;
 		}
