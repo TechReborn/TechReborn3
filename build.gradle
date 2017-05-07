@@ -32,10 +32,22 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	maven {
+	maven { // Reborn Core & Concrete
 		name = "Modmuss50"
 		url = "http://maven.modmuss50.me/"
 	}
+   	maven { // JEI
+		name = "Progwml"
+   		url "http://dvs1.progwml6.com/files/maven/"
+   	}
+   	maven { // HWYLA
+		name = "Progwml"
+   		url "http://tehnut.info/maven/"
+   	}
+   	maven { // MCMP2
+		name = "Amadornes"
+   		url "http://maven.amadornes.com/"
+   	}
 }
 
 version = "3.0.0"
@@ -79,6 +91,9 @@ dependencies {
 	// 	transitive = false
 	// }
 	compile "teamreborn.concrete:ConcreteReborn:0.1.0"
+	compile "mezz.jei:jei_1.11.2:4.3.4.273"
+	compile "mcp.mobius.waila:Hwyla:1.8.13-B26_1.11"
+	compile "MCMultiPart2:MCMultiPart:2.0.0"
 }
 
 
